@@ -1,0 +1,299 @@
+{
+  "$comment": "Site-Specific Data - This section contains information that changes from site to site. Fill out these fields for each specific site.",
+  "description": "Site-specific data for induction form",
+  "version": "1.0",
+  
+  "site_specific_fields": {
+    "s1_during_construction": {
+      "label": "During construction the site will be:",
+      "value": "",
+      "description": "Section 1: Description of site conditions during construction"
+    },
+    "s1_occupied_precautions": {
+      "label": "If site is occupied or partly occupied please note precautions as follows:",
+      "value": "",
+      "description": "Section 1: Precautions if site is occupied"
+    },
+    "s2_client_issues": {
+      "label": "The following issues have been identified as important to the Client, please take note:",
+      "value": "",
+      "description": "Section 2: Client-specific requirements and concerns"
+    },
+    "s3_first_aid_officer_name": {
+      "label": "Nominated First Aid Officer Name",
+      "value": "",
+      "description": "Section 3: First Aid Officer name"
+    },
+    "s3_first_aid_officer_phone": {
+      "label": "Nominated First Aid Officer Phone",
+      "value": "",
+      "description": "Section 3: First Aid Officer phone number"
+    },
+    "s3_backup_first_aid_officer_name": {
+      "label": "Backup First Aid Officer Name",
+      "value": "",
+      "description": "Section 3: Backup First Aid Officer name"
+    },
+    "s3_backup_first_aid_officer_phone": {
+      "label": "Backup First Aid Officer Phone",
+      "value": "",
+      "description": "Section 3: Backup First Aid Officer phone number"
+    },
+    "s3_medical_centre_name": {
+      "label": "Nearest Medical Centre/Doctor Name",
+      "value": "",
+      "description": "Section 3: Nearest medical facility name"
+    },
+    "s3_medical_centre_phone": {
+      "label": "Nearest Medical Centre/Doctor Phone",
+      "value": "",
+      "description": "Section 3: Nearest medical facility phone"
+    },
+    "s3_medical_centre_address": {
+      "label": "Nearest Medical Centre/Doctor Address",
+      "value": "",
+      "description": "Section 3: Nearest medical facility address"
+    },
+    "s3_hospital_name": {
+      "label": "Nearest Hospital Name",
+      "value": "",
+      "description": "Section 3: Nearest hospital name"
+    },
+    "s3_hospital_phone": {
+      "label": "Nearest Hospital Phone",
+      "value": "",
+      "description": "Section 3: Nearest hospital phone"
+    },
+    "s3_hospital_address": {
+      "label": "Nearest Hospital Address",
+      "value": "",
+      "description": "Section 3: Nearest hospital address"
+    },
+    "s3_ambulance_access": {
+      "label": "Is Ambulance access possible?",
+      "value": "",
+      "description": "Section 3: Ambulance access availability (Yes/No)"
+    },
+    "s3_ambulance_precautions": {
+      "label": "If 'No', what precautions are required?",
+      "value": "",
+      "description": "Section 3: Ambulance access precautions if not available"
+    },
+    "s3_first_aid_kit_type": {
+      "label": "First Aid Kit Specify Type/No",
+      "value": "",
+      "description": "Section 3: Type and number of first aid kits"
+    },
+    "s3_first_aid_kit_location": {
+      "label": "First Aid Kit Location",
+      "value": "",
+      "description": "Section 3: Location of first aid kits"
+    },
+    "s4_emergency_contact1_name": {
+      "label": "Out of Hours Emergency Contact 1 Name",
+      "value": "",
+      "description": "Section 4: First emergency contact name"
+    },
+    "s4_emergency_contact1_phone": {
+      "label": "Out of Hours Emergency Contact 1 Phone",
+      "value": "",
+      "description": "Section 4: First emergency contact phone"
+    },
+    "s4_emergency_contact2_name": {
+      "label": "Out of Hours Emergency Contact 2 Name",
+      "value": "",
+      "description": "Section 4: Second emergency contact name"
+    },
+    "s4_emergency_contact2_phone": {
+      "label": "Out of Hours Emergency Contact 2 Phone",
+      "value": "",
+      "description": "Section 4: Second emergency contact phone"
+    },
+    "s4_epa_contact_name": {
+      "label": "EPA Contact or Equivalent Authority Name",
+      "value": "",
+      "description": "Section 4: EPA contact name"
+    },
+    "s4_epa_contact_phone": {
+      "label": "EPA Contact or Equivalent Authority Phone",
+      "value": "",
+      "description": "Section 4: EPA contact phone"
+    },
+    "s8_fire_extinguisher_type": {
+      "label": "Fire Extinguisher Type",
+      "value": "",
+      "description": "Section 8: Type of fire extinguishers on site"
+    },
+    "s8_fire_extinguisher_location": {
+      "label": "Fire Extinguisher Location",
+      "value": "",
+      "description": "Section 8: Location of fire extinguishers"
+    },
+    "s11_eye_protection_when": {
+      "label": "Eye protection used when:",
+      "value": "",
+      "description": "Section 11: Site-specific conditions requiring eye protection"
+    },
+    "s11_hearing_protection_when": {
+      "label": "Hearing protection used when:",
+      "value": "",
+      "description": "Section 11: Site-specific conditions requiring hearing protection"
+    },
+    "s11_hard_hats_when": {
+      "label": "Hard hats used when:",
+      "value": "",
+      "description": "Section 11: Site-specific conditions requiring hard hats"
+    },
+    "s11_dust_masks_when": {
+      "label": "Dust masks used when:",
+      "value": "",
+      "description": "Section 11: Site-specific conditions requiring dust masks"
+    },
+    "s11_safety_harness_when": {
+      "label": "Safety harness used when:",
+      "value": "",
+      "description": "Section 11: Site-specific conditions requiring safety harness"
+    },
+    "s12_hot_work_permit_work": {
+      "label": "HOT WORK permit must be issued before the following work can commence:",
+      "value": "",
+      "description": "Section 12: Types of work requiring hot work permit"
+    },
+    "s12_other_permit_type": {
+      "label": "Other Permit Type",
+      "value": "",
+      "description": "Section 12: Other permit types required"
+    },
+    "s12_other_permit_work": {
+      "label": "Other Permit Work Description",
+      "value": "",
+      "description": "Section 12: Work requiring other permits"
+    },
+    "s14_site_office_location": {
+      "label": "The Site Office is located:",
+      "value": "",
+      "description": "Section 14: Location of site office"
+    },
+    "s14_work_area_access": {
+      "label": "Access to the work area is via:",
+      "value": "",
+      "description": "Section 14: Access route to work area"
+    },
+    "s14_working_hours_monday_friday": {
+      "label": "Working hours Monday to Friday:",
+      "value": "",
+      "description": "Section 14: Standard working hours Monday-Friday"
+    },
+    "s14_working_hours_saturday": {
+      "label": "Working hours Saturday:",
+      "value": "",
+      "description": "Section 14: Working hours Saturday"
+    },
+    "s14_working_hours_sunday": {
+      "label": "Working hours Sunday:",
+      "value": "",
+      "description": "Section 14: Working hours Sunday"
+    },
+    "s15_waste_disposal_other": {
+      "label": "Waste Disposal Strategy - Other: Details:",
+      "value": "",
+      "description": "Section 15: Other waste disposal strategy details"
+    },
+    "s16_paint_storage_procedures": {
+      "label": "The storage procedures for paint on this project are:",
+      "value": "",
+      "description": "Section 16: Site-specific paint storage procedures"
+    },
+    "s16_paint_washout_procedures": {
+      "label": "Specific paint washout procedures for this project are:",
+      "value": "",
+      "description": "Section 16: Site-specific paint washout procedures"
+    },
+    "s17_noisy_works_monday_friday": {
+      "label": "Noisy works Monday to Friday:",
+      "value": "",
+      "description": "Section 17: Permitted noisy works times Monday-Friday"
+    },
+    "s17_noisy_works_saturday": {
+      "label": "Noisy works Saturday:",
+      "value": "",
+      "description": "Section 17: Permitted noisy works times Saturday"
+    },
+    "s17_noisy_works_sunday": {
+      "label": "Noisy works Sunday:",
+      "value": "",
+      "description": "Section 17: Permitted noisy works times Sunday"
+    },
+    "s17_noisy_works_precautions": {
+      "label": "Other precautions relating to Noisy Works are as follows:",
+      "value": "",
+      "description": "Section 17: Additional noisy works precautions"
+    },
+    "s18_stormwater_precautions": {
+      "label": "Other precautions relating to stormwater, sedimentation and concrete waste include:",
+      "value": "",
+      "description": "Section 18: Additional stormwater precautions"
+    },
+    "s19_flora_fauna_precautions": {
+      "label": "The following precautions relating to the protection of flora/fauna shall apply on this site:",
+      "value": "",
+      "description": "Section 19: Flora/fauna protection precautions"
+    },
+    "s20_heavy_vehicle_access": {
+      "label": "Heavy vehicle access shall be via:",
+      "value": "",
+      "description": "Section 20: Heavy vehicle access route"
+    },
+    "s21_material_deliveries_via": {
+      "label": "Material deliveries shall be via:",
+      "value": "",
+      "description": "Section 21: Material delivery route/method"
+    },
+    "s21_rubbish_removal_via": {
+      "label": "Subcontractors rubbish and debris shall be removed via:",
+      "value": "",
+      "description": "Section 21: Rubbish removal route/method"
+    },
+    "s22_parking_arrangements": {
+      "label": "Parking arrangements are as follows:",
+      "value": "",
+      "description": "Section 22: Site parking arrangements"
+    },
+    "s22_amenities_location": {
+      "label": "The amenities area is located:",
+      "value": "",
+      "description": "Section 22: Location of amenities area"
+    },
+    "s22_toilets_location": {
+      "label": "Workers on site are to use toilets in the following location(s):",
+      "value": "",
+      "description": "Section 22: Location of toilets"
+    },
+    "s22_drilling_noisy_hours": {
+      "label": "Drilling or other noisy works shall be carried out between the following hours:",
+      "value": "",
+      "description": "Section 22: Permitted drilling/noisy works hours"
+    },
+    "s23_project_manager_name": {
+      "label": "Project Manager Name",
+      "value": "",
+      "description": "Section 23: Project Manager name"
+    },
+    "s23_project_manager_date": {
+      "label": "Project Manager Date",
+      "value": "",
+      "description": "Section 23: Project Manager authorization date (Excel date format)"
+    },
+    "s23_site_manager_name": {
+      "label": "Site Manager Name",
+      "value": "",
+      "description": "Section 23: Site Manager name"
+    },
+    "s23_site_manager_date": {
+      "label": "Site Manager Date",
+      "value": "",
+      "description": "Section 23: Site Manager authorization date (Excel date format)"
+    }
+  }
+}
+
