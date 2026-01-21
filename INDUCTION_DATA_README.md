@@ -9,17 +9,19 @@ Contains **general safety rules and procedures** that do NOT change from site to
 - General safety rules (Section 5)
 - Electrical safety rules (Section 6)
 - Working at height rules (Section 7)
+- Fire protection rules (Section 8 - general rules; site-specific: fire extinguisher types and locations)
 - Hazardous substances rules (Section 9)
 - Plant and equipment rules (Section 10)
-- General PPE rules (Section 11 - rules only)
-- General permit requirements (Section 12 - rules only)
+- General PPE rules (Section 11 - general rules; site-specific: conditions for when PPE is required)
+- General permit requirements (Section 12 - general rules; site-specific: work requiring permits)
 - General rules (Section 13)
-- Waste management procedures (Section 15 - general procedures)
-- Paint storage and disposal rules (Section 16 - general rules)
-- Air quality and noise management rules (Section 17 - general rules)
-- Stormwater management rules (Section 18 - general rules)
-- Habitat conservation rules (Section 19 - general rules)
-- Amenities and behavior rules (Section 22 - general rules)
+- Waste management procedures (Section 15 - general procedures; site-specific: waste disposal details)
+- Paint storage and disposal rules (Section 16 - general rules; site-specific: paint storage and washout procedures)
+- Air quality and noise management rules (Section 17 - general rules; site-specific: noisy works times and precautions)
+- Stormwater management rules (Section 18 - general rules; site-specific: stormwater precautions)
+- Habitat conservation rules (Section 19 - general rules; site-specific: flora/fauna protection measures)
+- Materials handling rules (Section 21 - general rules; site-specific: material delivery routes, rubbish removal routes)
+- Amenities and behavior rules (Section 22 - general rules; site-specific: parking, amenities locations, etc.)
 - Standard evacuation procedures (Section 4 - standard procedure)
 
 **Note:** This file is updated only when company-wide policies or regulations change.
@@ -45,42 +47,13 @@ Contains **information that changes from site to site**. This includes:
 - Emergency contact details (site-specific)
 - EPA contact information
 
-### Section 8: Fire Protection
-- Fire extinguisher types and locations
-
-### Section 11: PPE
-- Site-specific conditions for when PPE is required
-
-### Section 12: Permits
-- Site-specific work requiring permits
-
 ### Section 14: Work Areas and Access
 - Site office location
 - Access routes
 - Working hours
 
-### Section 15: Waste Management
-- Site-specific waste disposal details
-
-### Section 16: Paint Storage
-- Site-specific paint storage and washout procedures
-
-### Section 17: Air Quality and Noise
-- Site-specific noisy works times
-- Site-specific precautions
-
-### Section 18: Stormwater
-- Site-specific stormwater precautions
-
-### Section 19: Habitat
-- Site-specific flora/fauna protection measures
-
 ### Section 20: Traffic
 - Heavy vehicle access routes
-
-### Section 21: Materials Handling
-- Material delivery routes
-- Rubbish removal routes
 
 ### Section 22: Amenities
 - Parking arrangements
@@ -141,4 +114,6 @@ See `src/fieldIds.ts` for the complete list of field IDs.
 ## Schema Validation
 
 The original schema file (`induction-data-schema.json`) still validates the complete structure but can be updated to reflect this split if needed.
+
+
 

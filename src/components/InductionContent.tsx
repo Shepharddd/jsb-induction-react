@@ -1,13 +1,15 @@
-import { FIELD_IDS } from '../fieldIds'
+import { FIELD_IDS, getNumericFieldId } from '../fieldIds'
 
 interface InductionContentProps {
   inductionData: { [key: string]: string } | null
 }
 
 function InductionContent({ inductionData }: InductionContentProps) {
-  const getFieldValue = (fieldKey: string): string => {
+  const getFieldValue = (fieldKey: keyof typeof FIELD_IDS): string => {
     if (!inductionData) return ''
-    return inductionData[fieldKey] || ''
+    // Map descriptive field ID to numeric field ID used in JSON
+    const numericFieldId = getNumericFieldId(fieldKey)
+    return inductionData[numericFieldId] || ''
   }
 
   const formatExcelDate = (value: string): string => {
@@ -173,9 +175,15 @@ function InductionContent({ inductionData }: InductionContentProps) {
         <ol>
           <li><strong>Evacuation Procedure (unless directed otherwise):</strong>
             <ul>
-              <li>All workers on site are to leave the site via the front of the block on Crown Street.</li>
+              <li className="induction-field">
+                <label>All workers on site are to leave the site via:</label>
+                <span data-field={FIELD_IDS.s4_evacuation_route}>{getFieldValue(FIELD_IDS.s4_evacuation_route)}</span>
+              </li>
               <li>Site Manager is to ensure the site is clear taking Site Diary with them (if possible)</li>
-              <li>All personnel are to evacuate to assembly area located directly opposite the site on Crown St</li>
+              <li className="induction-field">
+                <label>All personnel are to evacuate to assembly area located:</label>
+                <span data-field={FIELD_IDS.s4_assembly_area_location}>{getFieldValue(FIELD_IDS.s4_assembly_area_location)}</span>
+              </li>
               <li>Do not re-enter the Site until advised by the emergency authority.</li>
             </ul>
           </li>
@@ -250,16 +258,8 @@ function InductionContent({ inductionData }: InductionContentProps) {
       <section className="induction-section">
         <h2>8. FIRE PROTECTION</h2>
         <ol>
-          <li>The work area is protected by Fire Extinguishers</li>
+          <li>The work area is protected by Fire Extinguishers. Type and location details are managed at the site level.</li>
         </ol>
-        <div className="induction-field tab-3">
-          <label>Type:</label>
-          <span data-field={FIELD_IDS.s8_fire_extinguisher_type}>{getFieldValue(FIELD_IDS.s8_fire_extinguisher_type)}</span>
-        </div>
-        <div className="induction-field tab-3">
-          <label>Location:</label>
-          <span data-field={FIELD_IDS.s8_fire_extinguisher_location}>{getFieldValue(FIELD_IDS.s8_fire_extinguisher_location)}</span>
-        </div>
       </section>
 
       <section className="induction-section">
@@ -293,46 +293,16 @@ function InductionContent({ inductionData }: InductionContentProps) {
           <li>Appropriate PPE must be used as detailed in the Safe Work Method Statements (JSA or equivalent) submitted to James Samuels Builder</li>
           <li>PPE advisory signs must be displayed where PPE is required to be worn.</li>
           <li>Steel capped safety footwear must be worn on site at all times.</li>
+          <li>Eye protection, hearing protection, hard hats, dust masks, and safety harnesses must be worn as required by site conditions and work activities.</li>
         </ol>
-        <div className="induction-field tab-3">
-          <label>Eye protection used when:</label>
-          <span data-field={FIELD_IDS.s11_eye_protection_when}>{getFieldValue(FIELD_IDS.s11_eye_protection_when)}</span>
-        </div>
-        <div className="induction-field tab-3">
-          <label>Hearing protection used when:</label>
-          <span data-field={FIELD_IDS.s11_hearing_protection_when}>{getFieldValue(FIELD_IDS.s11_hearing_protection_when)}</span>
-        </div>
-        <div className="induction-field tab-3">
-          <label>Hard hats used when:</label>
-          <span data-field={FIELD_IDS.s11_hard_hats_when}>{getFieldValue(FIELD_IDS.s11_hard_hats_when)}</span>
-        </div>
-        <div className="induction-field tab-3">
-          <label>Dust masks used when:</label>
-          <span data-field={FIELD_IDS.s11_dust_masks_when}>{getFieldValue(FIELD_IDS.s11_dust_masks_when)}</span>
-        </div>
-        <div className="induction-field tab-3">
-          <label>Safety harness used when:</label>
-          <span data-field={FIELD_IDS.s11_safety_harness_when}>{getFieldValue(FIELD_IDS.s11_safety_harness_when)}</span>
-        </div>
       </section>
 
       <section className="induction-section">
         <h2>12. PERMITS</h2>
         <ol>
-          <li>
-            <div className="induction-field">
-              <label>A HOT WORK permit must be issued by the Site Manager before the following work can commence on site:</label>
-              <span data-field={FIELD_IDS.s12_hot_work_permit_work}>{getFieldValue(FIELD_IDS.s12_hot_work_permit_work)}</span>
-            </div>
-          </li>
-          <li>Other permits must be issued by the Site Manger before the following work can commence on site:</li>
+          <li>A HOT WORK permit must be issued by the Site Manager before any hot work can commence on site.</li>
+          <li>Other permits must be issued by the Site Manager before any work requiring permits can commence on site, as determined by the Site Manager based on the specific work activities.</li>
         </ol>
-        <div className="induction-field tab-3">
-          <label>Permit type:</label>
-          <span data-field={FIELD_IDS.s12_other_permit_type}>{getFieldValue(FIELD_IDS.s12_other_permit_type)}</span>
-          <label>Work:</label>
-          <span data-field={FIELD_IDS.s12_other_permit_work}>{getFieldValue(FIELD_IDS.s12_other_permit_work)}</span>
-        </div>
       </section>
 
       <section className="induction-section">
@@ -390,12 +360,6 @@ function InductionContent({ inductionData }: InductionContentProps) {
           <ul>
             <li>Waste sorted into separate bins for recycling or disposal (preferred)</li>
             <li>All waste placed in common bins and sorted by Waste Removal Contractor</li>
-            <li>
-              <div className="induction-field">
-                <label>Other: Details:</label>
-                <span data-field={FIELD_IDS.s15_waste_disposal_other}>{getFieldValue(FIELD_IDS.s15_waste_disposal_other)}</span>
-              </div>
-            </li>
           </ul>
           <p className="induction-note">Note: Waste streams must not be contaminated, eg., food scraps with recycled cardboard.</p>
           <li>Waste Avoidance Initiatives are as follows:</li>
@@ -438,12 +402,6 @@ function InductionContent({ inductionData }: InductionContentProps) {
                   <li>The storage area is to be well ventilated.</li>
                 </ul>
               </li>
-              <li>
-                <div className="induction-field">
-                  <label>The storage procedures for paint on this project are:</label>
-                  <span data-field={FIELD_IDS.s16_paint_storage_procedures}>{getFieldValue(FIELD_IDS.s16_paint_storage_procedures)}</span>
-                </div>
-              </li>
             </ol>
           </li>
           <li>PAINT WASHOUT
@@ -461,12 +419,6 @@ function InductionContent({ inductionData }: InductionContentProps) {
                   <li>Empty drum storage for return to the manufacturer.</li>
                 </ul>
               </li>
-              <li>
-                <div className="induction-field">
-                  <label>Specific paint washout procedures for this project are:</label>
-                  <span data-field={FIELD_IDS.s16_paint_washout_procedures}>{getFieldValue(FIELD_IDS.s16_paint_washout_procedures)}</span>
-                </div>
-              </li>
             </ol>
           </li>
         </ol>
@@ -483,27 +435,8 @@ function InductionContent({ inductionData }: InductionContentProps) {
               <li>Dust extraction/ Vacs must be used on all machinery</li>
             </ul>
           </li>
-          <li>Noisy works are restricted to the following times:</li>
-        </ol>
-        <div className="induction-field tab-3">
-          <label>Monday to Friday:</label>
-          <span data-field={FIELD_IDS.s17_noisy_works_monday_friday}>{getFieldValue(FIELD_IDS.s17_noisy_works_monday_friday)}</span>
-        </div>
-        <div className="induction-field tab-3">
-          <label>Saturday:</label>
-          <span data-field={FIELD_IDS.s17_noisy_works_saturday}>{getFieldValue(FIELD_IDS.s17_noisy_works_saturday)}</span>
-        </div>
-        <div className="induction-field tab-3">
-          <label>Sunday:</label>
-          <span data-field={FIELD_IDS.s17_noisy_works_sunday}>{getFieldValue(FIELD_IDS.s17_noisy_works_sunday)}</span>
-        </div>
-        <ol>
-          <li>
-            <div className="induction-field">
-              <label>Other precautions relating to Noisy Works are as follows:</label>
-              <span data-field={FIELD_IDS.s17_noisy_works_precautions}>{getFieldValue(FIELD_IDS.s17_noisy_works_precautions)}</span>
-            </div>
-          </li>
+          <li>Noisy works are restricted to appropriate times as determined by the Site Manager based on site location and requirements.</li>
+          <li>All precautions relating to noisy works must be followed as directed by the Site Manager.</li>
         </ol>
       </section>
 
@@ -513,24 +446,14 @@ function InductionContent({ inductionData }: InductionContentProps) {
           <li>If concrete pumping or the refuelling of plant is to take place on site, special pollution prevention precautions must be undertaken by the relevant subcontractor. Concrete pumping or refuelling shall only be permitted in a bunded area protected by an appropriate impervious ground sheet.</li>
           <li>Waste concrete shall be poured on to a suitable membrane, broken up and removed to a waste bin after concrete has set.</li>
           <li>Concrete wash downs will not be permitted on site. Concrete truck "washout" will take place at the concrete supplier's facility.</li>
-          <li>
-            <div className="induction-field">
-              <label>Other precautions relating to stormwater, sedimentation and concrete waste include:</label>
-              <span data-field={FIELD_IDS.s18_stormwater_precautions}>{getFieldValue(FIELD_IDS.s18_stormwater_precautions)}</span>
-            </div>
-          </li>
+          <li>All other precautions relating to stormwater, sedimentation and concrete waste must be followed as directed by the Site Manager.</li>
         </ol>
       </section>
 
       <section className="induction-section">
         <h2>19. HABITAT AND CONSERVATION MANAGEMENT</h2>
         <ol>
-          <li>
-            <div className="induction-field">
-              <label>The following precautions relating to the protection of flora/fauna shall apply on this site:</label>
-              <span data-field={FIELD_IDS.s19_flora_fauna_precautions}>{getFieldValue(FIELD_IDS.s19_flora_fauna_precautions)}</span>
-            </div>
-          </li>
+          <li>All precautions relating to the protection of flora/fauna shall be followed as directed by the Site Manager and in accordance with environmental requirements for this site.</li>
         </ol>
       </section>
 
@@ -548,16 +471,9 @@ function InductionContent({ inductionData }: InductionContentProps) {
       <section className="induction-section">
         <h2>21. MATERIALS HANDLING</h2>
         <ol>
-          <li>Materials can be stored: In a space allocated by the Site Manager</li>
+          <li>Materials can be stored in a space allocated by the Site Manager.</li>
+          <li>Material deliveries and rubbish removal routes shall be coordinated through the Site Manager.</li>
         </ol>
-        <div className="induction-field tab-3">
-          <label>Material deliveries shall be via:</label>
-          <span data-field={FIELD_IDS.s21_material_deliveries_via}>{getFieldValue(FIELD_IDS.s21_material_deliveries_via)}</span>
-        </div>
-        <div className="induction-field tab-3">
-          <label>Subcontractors rubbish and debris shall be removed via:</label>
-          <span data-field={FIELD_IDS.s21_rubbish_removal_via}>{getFieldValue(FIELD_IDS.s21_rubbish_removal_via)}</span>
-        </div>
         <p className="induction-warning">Under no circumstances shall materials be stored on the street.</p>
         <p className="induction-note">Note: Site/Project Manager must be notified prior to any material being delivered or removed from site.</p>
       </section>

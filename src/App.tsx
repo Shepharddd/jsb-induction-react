@@ -41,14 +41,46 @@ function App() {
   async function init() {
     const params = new URLSearchParams(window.location.search)
     const site_param = params.get('site') || 'JSBHQ'
+    const useExampleData = params.get('example') === 'true'
 
     try {
-      const { siteInfo: fetchedSiteInfo, inductionData: fetchedInductionData } = await fetchSiteData(site_param)
-      setSiteInfo(fetchedSiteInfo)
-      setInductionData(fetchedInductionData)
+      if (useExampleData) {
+        // Use example data for development/testing
+        const exampleSiteData = await fetch('/induction-data-site-specific-example.json').then(r => r.json())
+        const contactName = exampleSiteData.site_contact_name || 'Site Manager'
+        const contactPhone = exampleSiteData.site_contact_phone || ''
+        const exampleSiteInfo = {
+          Name: exampleSiteData.site_name || 'Example Site',
+          Address: exampleSiteData.site_address || '123 Example Street, Example City',
+          SiteContact: contactPhone ? `${contactName} - ${contactPhone}` : contactName
+        }
+        setSiteInfo(exampleSiteInfo)
+        setInductionData(exampleSiteData.site_specific_fields)
+      } else {
+        // Fetch from API
+        const { siteInfo: fetchedSiteInfo, inductionData: fetchedInductionData } = await fetchSiteData(site_param)
+        setSiteInfo(fetchedSiteInfo)
+        setInductionData(fetchedInductionData)
+      }
     } catch (error) {
       console.error('Error initializing app:', error)
-      showToast('Error loading site data', 'error')
+      // Fallback to example data on error
+      try {
+        const exampleSiteData = await fetch('/induction-data-site-specific-example.json').then(r => r.json())
+        const contactName = exampleSiteData.site_contact_name || 'Site Manager'
+        const contactPhone = exampleSiteData.site_contact_phone || ''
+        const exampleSiteInfo = {
+          Name: exampleSiteData.site_name || 'Example Site',
+          Address: exampleSiteData.site_address || '123 Example Street, Example City',
+          SiteContact: contactPhone ? `${contactName} - ${contactPhone}` : contactName
+        }
+        setSiteInfo(exampleSiteInfo)
+        setInductionData(exampleSiteData.site_specific_fields)
+        console.log('Using example data as fallback')
+      } catch (fallbackError) {
+        console.error('Error loading example data:', fallbackError)
+        showToast('Error loading site data', 'error')
+      }
     } finally {
       setLoading(false)
     }
@@ -68,7 +100,7 @@ function App() {
       )
 
       const data = await response.json()
-
+      console.log(data)
       return {
         siteInfo: data.siteInfo || null,
         inductionData: data.inductionData || null

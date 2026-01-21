@@ -154,6 +154,12 @@ body {
   font-weight: 500;
 }
 
+#siteAddress {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .required {
   color: #dc3545;
 }
