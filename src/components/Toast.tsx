@@ -15,7 +15,7 @@ function Toast({ message, type, show }: ToastProps) {
       backgroundColor: type === 'success' ? '#28a745' : '#dc3545',
       color: 'white',
       padding: '15px 20px',
-      borderRadius: '5px',
+      borderRadius: '2px',
       boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
       zIndex: 10000,
       maxWidth: '300px',

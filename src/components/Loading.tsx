@@ -21,7 +21,7 @@ function Loading({ show }: LoadingProps) {
       <div style={{
         backgroundColor: 'white',
         padding: '20px 40px',
-        borderRadius: '8px',
+        borderRadius: '2px',
         fontSize: '18px',
         color: '#002512'
       }}>

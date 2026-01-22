@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import SignaturePad from 'signature_pad'
 import InductionContent from './InductionContent'
 
@@ -21,9 +21,10 @@ interface SubmitModalProps {
   onSubmit: (signature: string | null) => void
 }
 
-function SubmitModal({ isOpen, onClose, inductionData, formData, siteInfo, onSubmit }: SubmitModalProps) {
+function SubmitModal({ isOpen, onClose, inductionData, onSubmit }: SubmitModalProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const signaturePadRef = useRef<SignaturePad | null>(null)
+  const [termsAccepted, setTermsAccepted] = useState(false)
 
   useEffect(() => {
     if (isOpen) {
@@ -43,6 +44,9 @@ function SubmitModal({ isOpen, onClose, inductionData, formData, siteInfo, onSub
       if (signaturePadRef.current) {
         signaturePadRef.current.clear()
       }
+      
+      // Reset terms acceptance when modal closes
+      setTermsAccepted(false)
     }
 
     return () => {
@@ -64,10 +68,15 @@ function SubmitModal({ isOpen, onClose, inductionData, formData, siteInfo, onSub
 
     const rect = canvas.getBoundingClientRect()
     const ratio = Math.max(window.devicePixelRatio || 1, 1)
+    
+    // Use 100px height on mobile (max-width: 768px), 200px otherwise
+    const isMobile = window.matchMedia('(max-width: 768px)').matches
+    const canvasHeight = isMobile ? 100 : 200
+    
     canvas.width = rect.width * ratio
-    canvas.height = 200 * ratio
+    canvas.height = canvasHeight * ratio
     canvas.style.width = rect.width + 'px'
-    canvas.style.height = '200px'
+    canvas.style.height = `${canvasHeight}px`
 
     const ctx = canvas.getContext('2d')
     if (ctx) {
@@ -89,6 +98,11 @@ function SubmitModal({ isOpen, onClose, inductionData, formData, siteInfo, onSub
   }
 
   function handleSubmit() {
+    if (!termsAccepted) {
+      alert('Please accept the terms and conditions before submitting.')
+      return
+    }
+
     if (!signaturePadRef.current || signaturePadRef.current.isEmpty()) {
       onSubmit(null)
       return
@@ -111,23 +125,44 @@ function SubmitModal({ isOpen, onClose, inductionData, formData, siteInfo, onSub
           <div id="inductionContent" className="induction-content">
             <InductionContent inductionData={inductionData} />
           </div>
-
-          <p className="signature-note">Please sign below using your mouse or touch screen</p>
-
-          <div className="signature-container">
-            <canvas ref={canvasRef} id="signatureCanvas" width={600} height={200}></canvas>
-            <div className="signature-actions">
-              <button type="button" className="clear-signature-btn" onClick={clearSignature}>
-                Clear Signature
-              </button>
+          
+          <div style={{ marginTop: '0px', paddingTop: '0px' }}>
+            <div style={{ marginBottom: '15px' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  checked={termsAccepted}
+                  onChange={(e) => setTermsAccepted(e.target.checked)}
+                  style={{ width: '14px', height: '14px', cursor: 'pointer' }}
+                />
+                <span style={{ fontSize: '12px', color: '#333' }}>
+                  I have read and accept the terms and conditions
+                </span>
+              </label>
             </div>
+            
+
+            <div className="signature-container">
+              <div className="signature-container-header">
+                <p className="signature-note">Please sign below</p>
+                <button 
+                  type="button" 
+                  className="clear-signature-x" 
+                  onClick={clearSignature}
+                  aria-label="Clear signature"
+                >
+                  Clear
+                </button>
+              </div>
+
+              <canvas ref={canvasRef} id="signatureCanvas" width={600} height={200}></canvas>
+            </div>
+
+            {/* <p className="terms-agreement-text" style={{ marginTop: '20px' }}>By submitting this form you agree to all the terms and conditions</p> */}
+            <button type="button" className="submit-btn" onClick={handleSubmit} style={{ width: '100%', marginTop: '10px' }}>
+              Submit Induction Form
+            </button>
           </div>
-        </div>
-        <div className="modal-footer">
-          <p className="terms-agreement-text">By submitting this form you agree to all the terms and conditions</p>
-          <button type="button" className="submit-btn" onClick={handleSubmit} style={{ width: '100%', marginTop: '10px' }}>
-            Submit Induction Form
-          </button>
         </div>
       </div>
     </div>

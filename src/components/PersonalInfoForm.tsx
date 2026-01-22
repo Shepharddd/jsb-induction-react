@@ -5,11 +5,10 @@ interface PersonalInfoFormProps {
     whiteCard: string
   }
   onChange: (field: string, value: string) => void
-  onReset: () => void
   onReviewAndSign: () => void
 }
 
-function PersonalInfoForm({ formData, onChange, onReset, onReviewAndSign }: PersonalInfoFormProps) {
+function PersonalInfoForm({ formData, onChange, onReviewAndSign }: PersonalInfoFormProps) {
   return (
     <>
       <div className="input-row">
@@ -50,9 +49,6 @@ function PersonalInfoForm({ formData, onChange, onReset, onReviewAndSign }: Pers
           onChange={(e) => onChange('whiteCard', e.target.value)}
         />
         <div className="button-row">
-          <button type="button" className="reset-btn" onClick={onReset}>
-            Reset Form
-          </button>
           <button type="button" className="submit-btn" onClick={onReviewAndSign}>
             Review and Sign
           </button>

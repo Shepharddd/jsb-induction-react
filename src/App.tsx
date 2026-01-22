@@ -281,7 +281,6 @@ function App() {
                 <PersonalInfoForm
                   formData={formData}
                   onChange={handleFormChange}
-                  onReset={handleResetForm}
                   onReviewAndSign={handleOpenModal}
                 />
               </div>
